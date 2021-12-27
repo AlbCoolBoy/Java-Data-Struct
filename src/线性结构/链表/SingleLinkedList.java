@@ -43,6 +43,27 @@ class LInkedLinst{
             temp=temp.next;
         }
         temp.next=temp.next.next;
+        temp.next.next=null;
+    }
+    public void Traverse()
+    {
+       if(head.next==null)
+       {
+           System.out.println("链表为空");
+           return ;
+       }
+        Node temp=head.next;
+       while(temp!=null)
+       {
+           System.out.println(temp.number+" "+ temp.name);
+           System.out.println();
+           temp=temp.next;
+       }
+
+    }
+    public void InsertNode(Node node)
+    {
+
     }
 
 
