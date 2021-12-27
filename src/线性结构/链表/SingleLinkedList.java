@@ -61,7 +61,7 @@ class LInkedLinst{
        }
 
     }
-    public void InsertNode(Node node)
+    public void InsertNode(Node node,Node nodebefore)
     {
 
     }
