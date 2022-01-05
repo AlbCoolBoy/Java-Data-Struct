@@ -60,7 +60,7 @@ class ArrayStack {
     //遍历栈
     public void Traverse(){
         int mid=top;
-        while(mid!=-1)              //此处不能直接改变top的值，乱了
+        while(mid!=-1)              //此处不能直接改变top的值，应该设置一个中间变量，让其值等于top
         {
             System.out.print(stack[mid]+"  ");
             mid--;
