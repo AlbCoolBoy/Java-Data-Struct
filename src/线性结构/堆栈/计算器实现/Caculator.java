@@ -8,53 +8,65 @@ import java.util.Scanner;
 
 public class Caculator {
     public static void main(String[] args) {
-        NumStack numStack=new NumStack(10);
-        OpeStack opeStack=new OpeStack(10);
-        String expresion="3*7-6+6*5+8";
-        int num1=0;
-        int num2=0;
-        int index=0;
-        int result=0;
-        char oper=' ';
-        char ch=' ';
-        while(true){
+        NumStack numStack = new NumStack(10);
+        OpeStack opeStack = new OpeStack(10);
+        String expresion = "31*7-6+6*5+8";
+        int num1 = 0;
+        int num2 = 0;
+        int index = 0;
+        int result = 0;
+        char oper = ' ';
+        char ch = ' ';
+        String keepnumber = "";
+        while (true) {
             //substring方法是一个返回子串的方法，具体介绍可见如下
             // https://www.runoob.com/java/java-string-substring.html
-            ch=expresion.substring(index,index+1).charAt(0);
-            if(opeStack.isop(ch)){          //如果输入的是符号
-                if(opeStack.isEmpty()){     //如果符号栈为空就直接入栈
+            ch = expresion.substring(index, index + 1).charAt(0);
+            if (opeStack.isop(ch)) {          //如果输入的是符号
+                if (opeStack.isEmpty()) {     //如果符号栈为空就直接入栈
                     opeStack.Push(ch);
-                }else                       //如果符号栈不为空分两种情况
+                } else                       //如果符号栈不为空分两种情况
                 {
                     //如果输入的运算符的优先级小于等于栈中的运算符优先级,就进行一次计算
-                    if(opeStack.pripority(ch)<= opeStack.pripority(opeStack.Gettop())){
-                        num1=numStack.Pop();
-                        num2=numStack.Pop();
-                        oper=opeStack.Pop();
-                        result=opeStack.cal(num1,num2,oper);
+                    if (opeStack.pripority(ch) <= opeStack.pripority(opeStack.Gettop())) {
+                        num1 = numStack.Pop();
+                        num2 = numStack.Pop();
+                        oper = opeStack.Pop();
+                        result = opeStack.cal(num1, num2, oper);
                         numStack.Push(result);//将得到的运算结果入栈到数栈中
                         opeStack.Push(ch);//将当前的符号入符号栈
-                    }else{
+                    } else {
                         opeStack.Push(ch);
                     }
                 }
-            }
-            else{                           //如果输入的是数字
-                numStack.Push(ch-48);   //因为这里的即使是数字也是字符型的数字，应该将其转换为数字型的数字
+            } else {                           //如果输入的是数字
+                //当处理的是多位数的时候就不能发现是一个属就立即将数入栈，应该要判断他的后面有没有数字了
+                //处理数的时候，需要向expresion后面再看一位
+                //因此需要定义一个字符串变量用于拼接
+                keepnumber += ch;
+                if (index == expresion.length() - 1) {
+                    numStack.Push(Integer.parseInt(keepnumber));
+                } else {
+                    if (opeStack.isop(expresion.substring(index + 1, index + 2).charAt(0))) {  //后一位是运算符,这里可能会发生数组越界
+                        numStack.Push(Integer.parseInt(keepnumber));
+                        //再这里拼接完之后要将keepnumber清空
+                        keepnumber = "";
+                    }
+                }
             }
             index++;
-            if(index>=expresion.length()){
+            if (index >= expresion.length()) {
                 break;
             }
         }
-        while(true){
-            if(opeStack.isEmpty()){
+        while (true) {
+            if (opeStack.isEmpty()) {
                 break;
             }
-            num1=numStack.Pop();
-            num2=numStack.Pop();
-            oper=opeStack.Pop();
-            result=opeStack.cal(num1,num2,oper);
+            num1 = numStack.Pop();
+            num2 = numStack.Pop();
+            oper = opeStack.Pop();
+            result = opeStack.cal(num1, num2, oper);
             numStack.Push(result);
         }
         System.out.println(numStack.Pop());
@@ -139,10 +151,11 @@ class OpeStack {
     private char[] stack;
     private int top = -1;
 
-    public OpeStack(int maxsize){
-        this.maxsize=maxsize;
-        stack=new char[this.maxsize];
+    public OpeStack(int maxsize) {
+        this.maxsize = maxsize;
+        stack = new char[this.maxsize];
     }
+
     public boolean isEmpty() {
         return top == -1;
     }
@@ -169,7 +182,8 @@ class OpeStack {
         top--;
         return result;
     }
-    public char Gettop(){
+
+    public char Gettop() {
         return stack[top];
     }
 
