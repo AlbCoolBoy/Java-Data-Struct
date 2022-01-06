@@ -18,7 +18,7 @@ public class ArrayQueueDemo {
             int cin = input.nextInt();
             queue.EnQueue(cin);
         }
-        ;
+
         queue.Traverse();
 
         System.out.println("1：添加数据入队");
@@ -41,7 +41,6 @@ public class ArrayQueueDemo {
                     System.out.println("队列现有数据如下：");
                     queue.Traverse();
                     break;
-
             }
         }
     }
@@ -111,47 +110,6 @@ class ArrayQueue {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
