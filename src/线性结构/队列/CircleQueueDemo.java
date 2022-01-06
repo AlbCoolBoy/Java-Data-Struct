@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 //实现一个循环队列
 //循环队列中的有效的数据个数是 (rear+maxsize-front)%maxsize
+//循环队列中最重要的就是尾指针可能出现大于maxsize的情况，所以要进行取模运算进行判断
 public class CircleQueueDemo {
     public static void main(String[] args) {
         CircleQueue queue=new CircleQueue(20);
