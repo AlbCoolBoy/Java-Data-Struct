@@ -1,4 +1,4 @@
-package Java语言的一些机制.集合;
+package JavaSE.集合;
 
 import java.util.ArrayList;
 import java.util.Collection;

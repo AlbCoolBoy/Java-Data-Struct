@@ -1,4 +1,4 @@
-package Java语言的一些机制.集合.泛型;
+package JavaSE.集合.泛型;
 //自定义泛型
 public class GenericTest03<E> {
     public static void main(String[] args) {
