@@ -6,7 +6,9 @@ import java.util.Set;
 
 /*
 * 同时重写hashcode和equals，必须同时重写
-* 并且如果equals返回的是true,那么hashcode返回的也必须是true*/
+* 并且如果equals返回的是true,那么hashcode返回的也必须是true
+*
+* HashMap的key值是可以为null的，但是只能有一个为null*/
 public class HashMapTest02 {
     public static void main(String[] args) {
         Student student1=new Student("Justin");
