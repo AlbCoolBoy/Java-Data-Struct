@@ -13,6 +13,8 @@ public class FileInputStreamTest04 {
     public static void main(String[] args) {
         FileInputStream file=null;
         try {
+
+
             file=new FileInputStream("D:\\ALB\\Java数据结构\\src\\JavaSE\\IO流\\读测试文件.txt");
             int read=file.available();
             System.out.println(read);
