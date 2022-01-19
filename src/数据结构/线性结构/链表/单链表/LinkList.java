@@ -1,4 +1,4 @@
-package 线性结构.链表.单链表;
+package 数据结构.线性结构.链表.单链表;
 
 import java.util.Scanner;
 //实现单链表的基本操作：头插，尾插，删除，遍历

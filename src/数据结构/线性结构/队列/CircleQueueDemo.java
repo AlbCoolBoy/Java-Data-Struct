@@ -1,4 +1,4 @@
-package 线性结构.队列;
+package 数据结构.线性结构.队列;
 
 import java.util.Scanner;
 

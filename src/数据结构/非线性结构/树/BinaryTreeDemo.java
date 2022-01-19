@@ -1,4 +1,4 @@
-package 非线性结构.树;
+package 数据结构.非线性结构.树;
 
 public class BinaryTreeDemo {
     public static void main(String[] args) {

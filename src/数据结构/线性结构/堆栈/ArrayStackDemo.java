@@ -1,6 +1,5 @@
-package 线性结构.堆栈;
+package 数据结构.线性结构.堆栈;
 
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class ArrayStackDemo {
