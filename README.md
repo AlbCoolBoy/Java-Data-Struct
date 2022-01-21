@@ -1,1 +1,2 @@
-# Java-Struct
+# Systematic learning of Java
+
