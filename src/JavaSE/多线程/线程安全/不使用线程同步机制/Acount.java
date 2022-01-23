@@ -1,8 +1,6 @@
-package JavaSE.多线程;
+package JavaSE.多线程.线程安全.不使用线程同步机制;
 
-public class ThreadSafetyTest01 {
-}
-class Acount {
+public class Acount {
     private String number;  //银行账户
     private double balance;    //余额
 
@@ -30,10 +28,13 @@ class Acount {
         this.balance = balance;
     }
 
-    public void withdraw(double money){
-        double before=this.balance;
-        double after=before-money;
-        this.balance=after;
+    public void withdraw(double money) throws InterruptedException {
+        double before = this.balance;
+        double after = before - money;
+
+        Thread.sleep(0);     //如果在这里添加一个睡眠时间，那么两个线程一定会冲突
+        this.balance = after;
 
     }
+
 }
