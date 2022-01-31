@@ -1,4 +1,4 @@
-package JavaSE.多线程.线程安全.使用线程同步机制;
+package JavaSE.多线程.线程安全.ThreadSafety01.使用线程同步机制;
 
 public class AcountThread extends Thread{
     private Acount acount;

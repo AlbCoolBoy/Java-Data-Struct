@@ -1,4 +1,4 @@
-package JavaSE.多线程.线程安全.使用线程同步机制;
+package JavaSE.多线程.线程安全.ThreadSafety01.使用线程同步机制;
 
 public class Acount {
     private String number;  //银行账户
@@ -41,7 +41,7 @@ public class Acount {
                 interruptedException.printStackTrace();
             }
             this.balance = after;
-        }
+        }       //synchronized中的代码块越小效率越高
 
     }
 }
