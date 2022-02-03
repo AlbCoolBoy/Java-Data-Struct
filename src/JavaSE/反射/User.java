@@ -21,6 +21,18 @@ public class User {
         this.bitrh_date = bitrh_date;
         this.age = age;
     }
+    public User(int number,String name){
+        this.number=number;
+        this.name=name;
+    }
+    public User(String sex,int id_number){
+        this.sex=sex;
+        this.id_number=id_number;
+    }
+
+    public User(int age){
+        this.age=age;
+    }
 
     public void run(int number, String name){
         System.out.println("running");

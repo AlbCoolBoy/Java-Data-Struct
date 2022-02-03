@@ -15,7 +15,7 @@ public class ReflectTest04 {
         //对象
         //方法名
         //实参列表
-        //返回值
+        //返回值e
         method.invoke(obj,18,"justin");
         //使用invoke方法调用并执行目的方法
 
