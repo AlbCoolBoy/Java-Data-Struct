@@ -10,8 +10,19 @@ public class User {
 
 
     public User(){
-        System.out.println("测试一下用反射机制实例化的对象能不能输出无参构造的内容哈");
 
+    }
 
+    public User(int number, String name, String sex, int id_number, String bitrh_date, int age) {
+        this.number = number;
+        this.name = name;
+        this.sex = sex;
+        this.id_number = id_number;
+        this.bitrh_date = bitrh_date;
+        this.age = age;
+    }
+
+    public void run(int number, String name){
+        System.out.println("running");
     }
 }
