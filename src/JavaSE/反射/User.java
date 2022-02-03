@@ -4,6 +4,9 @@ public class User {
     public int number;
     private String name;
     protected String sex;
+    private int id_number;
+    private String bitrh_date;
+    public int age;
 
 
     public User(){

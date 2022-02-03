@@ -15,7 +15,7 @@ public class FieldTest01 {
         Field field1[]=c.getDeclaredFields();   //返回所有属性的字段
         System.out.println(field1.length);
         for (Field fields:field1){
-            System.out.println(fields.getName());
+            System.out.println(fields.getType().getSimpleName()+" "+fields.getName());  //返回属性的数据类型和名字
         }
     }
 }
