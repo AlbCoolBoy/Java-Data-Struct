@@ -178,6 +178,7 @@ class Node {                          //二叉树中的结点
         System.out.println(this);
     }
 
+
     //前序查找,通过递归实现，分别对左右子树进行查找
     public Node preorderSearch(int number) {
         Node resultnode = null;
