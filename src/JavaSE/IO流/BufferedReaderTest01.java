@@ -24,7 +24,7 @@ public class BufferedReaderTest01 {
             System.out.println(line);
         }
 
-        bufferedReader.close();         //在关闭bufferedreader的时候，在源代码中可以发现会自动关闭传递进来的节点流,所以只需要关闭最外层的流，内部的节点流会自动关闭
+        bufferedReader.close();//在关闭bufferedreader的时候，在源代码中可以发现会自动关闭传递进来的节点流,所以只需要关闭最外层的流，内部的节点流会自动关闭
     }
 }
 //使用readLine方法进行文件读取效果比较好

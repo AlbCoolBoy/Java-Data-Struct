@@ -1,7 +1,7 @@
 package 数据结构.线性结构.堆栈;
 
 import java.util.Scanner;
-
+//使用数组模拟堆栈的本质
 public class ArrayStackDemo {
     public static void main(String[] args) {
         ArrayStack arrayStack=new ArrayStack(5);
@@ -17,16 +17,17 @@ public class ArrayStackDemo {
     }
 }
 
+
+//数组栈类
 class ArrayStack {
     private int MaxSize;
     private int[] stack;
     private int top = -1;
-    ;
 
 
     public ArrayStack(int MaxSize) {
         this.MaxSize = MaxSize;
-        stack = new int[this.MaxSize];
+        stack = new int[this.MaxSize];      //将堆栈定义为一个数组
     }
 
     public boolean isFulll() {
@@ -39,7 +40,7 @@ class ArrayStack {
     //入栈
     public void Push(int value) {
         if (isFulll()) {
-            System.out.println("stack is full,cant push any element");
+            System.out.println("stack is full,can not push any element");
             return;
         }
         top=top+1;
