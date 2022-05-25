@@ -1,106 +1,84 @@
 package 数据结构.非线性结构.树;
 
+import java.util.Scanner;
+import java.util.function.BinaryOperator;
+
 public class BinaryTreeDemo {
     public static void main(String[] args) {
-        //创建一棵而=二叉树
         BinaryTree tree = new BinaryTree();
-        //创需要的节点
-        Node root = new Node(1, "first");
-        Node node2 = new Node(2, "second");
-        Node node3 = new Node(3, "third");
-        Node node4 = new Node(4, "fourth");
-        //先手动创建二叉树
-        root.setLeft(node2);
-        root.setRight(node3);
-        node2.setLeft(node4);
-        tree.setRoot(root);
 
-        tree.preorder();
-        System.out.println("________________");
-        tree.inorder();
-        System.out.println("________________");
-        tree.postoreder();
 
     }
+
+
+
 }
 
-class BinaryTree {                           //二叉树类
-    private Node root;                      //根节点
+class BinaryTree {
+    private Node root;
 
-    public void setRoot(Node node) {         //二叉树的根节点
-        this.root = node;
+    public Node getRoot() {
+        return root;
+    }
+    public void setRoot(Node node){
+        this.root=node;
     }
 
-    //前序遍历
     public void preorder() {
-        if (this.root == null) {
-            System.out.println("二叉树为空");
-        } else {
+        if (this.root != null) {
             this.root.preorder();
+        } else {
+            System.out.println("二叉树为空");
         }
     }
 
-    //中序遍历
     public void inorder() {
-        if (this.root == null) {
-            System.out.println("二叉树为空");
-        } else {
+        if (this.root != null) {
             this.root.inorder();
+        } else {
+            System.out.println("二叉树为空");
         }
     }
 
-    //后序遍历
-    public void postoreder() {
-        if (this.root == null) {
-            System.out.println("二叉树为空");
-        } else {
+    public void postorder() {
+        if (this.root != null) {
             this.root.postorder();
+        } else {
+            System.out.println("二叉树为空");
         }
     }
 
-    //前序查找
-    public Node PreorderSearch(int number) {
-        if (root != null) {
-            return root.preorderSearch(number);
-        } else {
-            System.out.println("二叉树为空");
+    public Node create(Node node) {
+        int count = 0;
+        Scanner scanner = new Scanner(System.in);
+        int number=scanner.nextInt();
+        if(number==-1){
             return null;
+        }else{
+            Node head=new Node();
+            if(count==1){
+                this.root=head;
+            }
+            create(head.left);
+            create(head.right);
+            return head;
         }
-    }
 
-    //中序查找
-    public Node InorderSearch(int number) {
-        if (root != null) {
-            return root.inorderSearch(number);
-        } else {
-            System.out.println("二叉树为空");
-            return null;
-        }
-    }
-
-    //后序查找
-    public Node PostorderSearch(int number) {
-        if (root != null) {
-            return root.postorderSearch(number);
-        } else {
-            System.out.println("二叉树为空");
-            return null;
-        }
     }
 
 
 }
 
-
-//节点类，单独定义节点的目的是，不同实际情境中，节点中对应的数据类型不同
-class Node {                          //二叉树中的结点
+class Node {
     private int number;
-    private String name;
-    private Node left;
-    private Node right;
+    public Node left;
+    public Node right;
 
-    public Node(int number, String name) {
-        this.name = name;
+    public Node() {
+
+    }
+
+    public Node(int number) {
         this.number = number;
     }
 
@@ -110,14 +88,6 @@ class Node {                          //二叉树中的结点
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Node getLeft() {
@@ -140,23 +110,19 @@ class Node {                          //二叉树中的结点
     public String toString() {
         return "Node{" +
                 "number=" + number +
-                ", name='" + name + '\'' +
                 '}';
     }
 
-    //前序遍历
     public void preorder() {
-        System.out.println(this);//线输出父节点
+        System.out.println(this);
         if (this.left != null) {
             this.left.preorder();
         }
         if (this.right != null) {
             this.right.preorder();
         }
-
     }
 
-    //中序遍历
     public void inorder() {
         if (this.left != null) {
             this.left.inorder();
@@ -167,7 +133,6 @@ class Node {                          //二叉树中的结点
         }
     }
 
-    //后序遍历
     public void postorder() {
         if (this.left != null) {
             this.left.postorder();
@@ -177,64 +142,41 @@ class Node {                          //二叉树中的结点
         }
         System.out.println(this);
     }
-
-
-    //前序查找,通过递归实现，分别对左右子树进行查找
-    public Node preorderSearch(int number) {
-        Node resultnode = null;
-        if (this.number == number) {
-            return this;
-        }
-        if (this.left != null) {
-            resultnode = this.left.preorderSearch(number);
-        }
-        if (resultnode != null) {
-            return resultnode;
-        }
-        if (this.right != null) {
-            resultnode = this.right.preorderSearch(number);
-        }
-        return resultnode;
-    }
-
-    //中序查找
-    public Node inorderSearch(int number) {
-        Node resultnode = null;
-        if (this.left != null) {
-            resultnode = this.left.inorderSearch(number);
-        }
-        if (resultnode != null) {
-            return resultnode;
-        }
-        if (this.number == number) {
-            return this;
-        }
-        if (this.right != null) {
-            resultnode = this.right.inorderSearch(number);
-        }
-        return resultnode;
-    }
-
-    //后序查找
-    public Node postorderSearch(int number) {
-        Node resultnode = null;
-        if (this.left != null) {
-            resultnode = this.left.postorderSearch(number);
-        }
-        if (resultnode != null) {
-            return resultnode;
-        }
-        if (this.right != null) {
-            resultnode = this.right.postorderSearch(number);
-        }
-        if (resultnode != null) {
-            return resultnode;
-        }
-        if (this.number == number) {
-            return this;
-        }
-        return resultnode;
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
